@@ -9,4 +9,7 @@
 => Demo:
 - Chọn tuyến
 - Thanh toán QR
+- Bấm hủy thanh toán nếu muốn chọn tuyến khác
 - In bill
+- Quay lại ban đầu
+- Alt + f4 để thoát chương trình (admin)
