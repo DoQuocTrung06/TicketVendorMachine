@@ -96,21 +96,27 @@ namespace TicketVendorMachine
                 string routeName = drv["RouteName"].ToString();
                 string price = drv["Price"].ToString();
 
-                // Lưu giao dịch vào Database
+                
+                int amountPaid = Convert.ToInt32(drv["Price"]);
+
+             
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO Tickets (RouteID, IssueDate, PaymentMethod, Status) VALUES (@RouteID, @IssueDate, 'E-Wallet', 'Paid'); SELECT SCOPE_IDENTITY();";
+
+                    
+                    string query = "INSERT INTO Tickets (RouteID, AmountPaid, IssueDate, PaymentMethod, Status) VALUES (@RouteID, @AmountPaid, @IssueDate, 'E-Wallet', 'Paid'); SELECT SCOPE_IDENTITY();";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@RouteID", routeId);
+                    cmd.Parameters.AddWithValue("@AmountPaid", amountPaid); 
                     cmd.Parameters.AddWithValue("@IssueDate", DateTime.Now);
 
-                    // Lấy ID vé vừa tạo để in lên Bill
+                    
                     int ticketId = Convert.ToInt32(cmd.ExecuteScalar());
 
                     // Hiển thị Bill
                     pnlBill.Visible = true;
-                 
+
                     lblBillDetails.Text = $"=== VÉ TÀU BEN THANH METRO ===\n\n" +
                                           $"Mã vé: #{ticketId}\n" +
                                           $"Tuyến: {routeName}\n" +
@@ -119,21 +125,17 @@ namespace TicketVendorMachine
                                           $"Trạng thái: ĐÃ THANH TOÁN (QR)\n\n" +
                                           $"Chúc quý khách chuyến đi vui vẻ!";
 
-
+                    // Ẩn các thành phần giao diện không cần thiết
                     cbRoutes.Visible = false;
                     lblPrice.Visible = false;
                     btnPay.Visible = false;
 
-                    // ---> GIẤU LUÔN CHỮ "THÀNH CÔNG" ĐI VÌ ĐÃ ĐỌC XONG RỒI
+                    
                     lblStatus.Visible = false;
 
-                    // Bắt đầu đếm ngược 5s để quay về màn hình chính cho người tiếp theo
-                    timerReset.Start();
-
-
-
-
-                    timerReset.Start();
+                   
+                    timerReset.Stop(); 
+                    timerReset.Start(); 
                 }
             }
             catch (Exception ex)
