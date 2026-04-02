@@ -47,6 +47,8 @@
             // 
             // cbRoutes
             // 
+            this.cbRoutes.BackColor = System.Drawing.SystemColors.Window;
+            this.cbRoutes.ForeColor = System.Drawing.Color.Black;
             this.cbRoutes.FormattingEnabled = true;
             this.cbRoutes.Location = new System.Drawing.Point(103, 108);
             this.cbRoutes.Name = "cbRoutes";
@@ -66,12 +68,13 @@
             // 
             // btnPay
             // 
+            this.btnPay.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnPay.Location = new System.Drawing.Point(103, 219);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(139, 35);
             this.btnPay.TabIndex = 2;
             this.btnPay.Text = "Thanh toán bằng QR";
-            this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.UseVisualStyleBackColor = false;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // picQR
@@ -85,11 +88,14 @@
             // 
             // pnlBill
             // 
+            this.pnlBill.BackColor = System.Drawing.Color.White;
             this.pnlBill.Controls.Add(this.lblBillDetails);
+            this.pnlBill.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.pnlBill.Location = new System.Drawing.Point(255, 74);
             this.pnlBill.Name = "pnlBill";
-            this.pnlBill.Size = new System.Drawing.Size(253, 160);
+            this.pnlBill.Size = new System.Drawing.Size(292, 180);
             this.pnlBill.TabIndex = 5;
+            this.pnlBill.UseWaitCursor = true;
             this.pnlBill.Visible = false;
             this.pnlBill.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBill_Paint);
             // 
@@ -128,13 +134,16 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(232, 257);
+            this.lblStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblStatus.Location = new System.Drawing.Point(241, 257);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(217, 24);
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "Đang chờ bạn quét mã...";
             this.lblStatus.Visible = false;
+            this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click_1);
             // 
             // timerFakeAPI
             // 
@@ -143,9 +152,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.DarkGray;
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(545, 257);
+            this.btnCancel.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnCancel.ForeColor = System.Drawing.Color.Red;
+            this.btnCancel.Location = new System.Drawing.Point(560, 257);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 24);
             this.btnCancel.TabIndex = 9;
@@ -158,6 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblStatus);

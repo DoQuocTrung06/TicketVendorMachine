@@ -222,5 +222,10 @@ namespace TicketVendorMachine
             cbRoutes.SelectedIndex = -1;
             lblPrice.Text = "Giá vé: 0 VNĐ";
         }
+
+        private void lblStatus_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
