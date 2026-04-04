@@ -29,20 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cbRoutes = new System.Windows.Forms.ComboBox();
             this.lblPrice = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
             this.picQR = new System.Windows.Forms.PictureBox();
             this.pnlBill = new System.Windows.Forms.Panel();
-            this.lblBillDetails = new System.Windows.Forms.Label();
             this.lblClock = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerReset = new System.Windows.Forms.Timer(this.components);
             this.lblStatus = new System.Windows.Forms.Label();
             this.timerFakeAPI = new System.Windows.Forms.Timer(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
+            this.picLogoMoMo = new System.Windows.Forms.PictureBox();
+            this.picLogoVNPay = new System.Windows.Forms.PictureBox();
+            this.lblPaymentMethods = new System.Windows.Forms.Label();
+            this.lblBillDetails = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picQR)).BeginInit();
             this.pnlBill.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogoMoMo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogoVNPay)).BeginInit();
             this.SuspendLayout();
             // 
             // cbRoutes
@@ -50,7 +56,7 @@
             this.cbRoutes.BackColor = System.Drawing.SystemColors.Window;
             this.cbRoutes.ForeColor = System.Drawing.Color.Black;
             this.cbRoutes.FormattingEnabled = true;
-            this.cbRoutes.Location = new System.Drawing.Point(103, 108);
+            this.cbRoutes.Location = new System.Drawing.Point(103, 131);
             this.cbRoutes.Name = "cbRoutes";
             this.cbRoutes.Size = new System.Drawing.Size(139, 21);
             this.cbRoutes.TabIndex = 0;
@@ -59,7 +65,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(112, 179);
+            this.lblPrice.Location = new System.Drawing.Point(112, 194);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(76, 13);
             this.lblPrice.TabIndex = 1;
@@ -69,7 +75,7 @@
             // btnPay
             // 
             this.btnPay.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnPay.Location = new System.Drawing.Point(103, 219);
+            this.btnPay.Location = new System.Drawing.Point(103, 246);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(139, 35);
             this.btnPay.TabIndex = 2;
@@ -79,7 +85,7 @@
             // 
             // picQR
             // 
-            this.picQR.Location = new System.Drawing.Point(276, 84);
+            this.picQR.Location = new System.Drawing.Point(276, 131);
             this.picQR.Name = "picQR";
             this.picQR.Size = new System.Drawing.Size(213, 150);
             this.picQR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -91,25 +97,13 @@
             this.pnlBill.BackColor = System.Drawing.Color.White;
             this.pnlBill.Controls.Add(this.lblBillDetails);
             this.pnlBill.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.pnlBill.Location = new System.Drawing.Point(255, 74);
+            this.pnlBill.Location = new System.Drawing.Point(264, 89);
             this.pnlBill.Name = "pnlBill";
             this.pnlBill.Size = new System.Drawing.Size(292, 180);
             this.pnlBill.TabIndex = 5;
             this.pnlBill.UseWaitCursor = true;
             this.pnlBill.Visible = false;
             this.pnlBill.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBill_Paint);
-            // 
-            // lblBillDetails
-            // 
-            this.lblBillDetails.AutoSize = true;
-            this.lblBillDetails.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillDetails.Location = new System.Drawing.Point(28, 8);
-            this.lblBillDetails.Name = "lblBillDetails";
-            this.lblBillDetails.Size = new System.Drawing.Size(49, 14);
-            this.lblBillDetails.TabIndex = 0;
-            this.lblBillDetails.Text = "label1";
-            this.lblBillDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBillDetails.Click += new System.EventHandler(this.lblBillDetails_Click);
             // 
             // lblClock
             // 
@@ -134,10 +128,10 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblStatus.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblStatus.Location = new System.Drawing.Point(241, 257);
+            this.lblStatus.Location = new System.Drawing.Point(240, 298);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(217, 24);
             this.lblStatus.TabIndex = 8;
@@ -154,7 +148,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCancel.ForeColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(560, 257);
+            this.btnCancel.Location = new System.Drawing.Point(556, 298);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 24);
             this.btnCancel.TabIndex = 9;
@@ -163,12 +157,64 @@
             this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // picLogoMoMo
+            // 
+            this.picLogoMoMo.Image = ((System.Drawing.Image)(resources.GetObject("picLogoMoMo.Image")));
+            this.picLogoMoMo.Location = new System.Drawing.Point(307, 98);
+            this.picLogoMoMo.Name = "picLogoMoMo";
+            this.picLogoMoMo.Size = new System.Drawing.Size(32, 27);
+            this.picLogoMoMo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogoMoMo.TabIndex = 10;
+            this.picLogoMoMo.TabStop = false;
+            this.picLogoMoMo.Visible = false;
+            this.picLogoMoMo.Click += new System.EventHandler(this.picLogoMoMo_Click);
+            // 
+            // picLogoVNPay
+            // 
+            this.picLogoVNPay.Image = ((System.Drawing.Image)(resources.GetObject("picLogoVNPay.Image")));
+            this.picLogoVNPay.Location = new System.Drawing.Point(345, 98);
+            this.picLogoVNPay.Name = "picLogoVNPay";
+            this.picLogoVNPay.Size = new System.Drawing.Size(86, 27);
+            this.picLogoVNPay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogoVNPay.TabIndex = 11;
+            this.picLogoVNPay.TabStop = false;
+            this.picLogoVNPay.Visible = false;
+            this.picLogoVNPay.Click += new System.EventHandler(this.picLogoVNPay_Click);
+            // 
+            // lblPaymentMethods
+            // 
+            this.lblPaymentMethods.AutoSize = true;
+            this.lblPaymentMethods.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaymentMethods.Location = new System.Drawing.Point(305, 74);
+            this.lblPaymentMethods.Name = "lblPaymentMethods";
+            this.lblPaymentMethods.Size = new System.Drawing.Size(145, 12);
+            this.lblPaymentMethods.TabIndex = 12;
+            this.lblPaymentMethods.Text = "CHẤP NHẬN THANH TOÁN";
+            this.lblPaymentMethods.Visible = false;
+            this.lblPaymentMethods.Click += new System.EventHandler(this.lblPaymentMethods_Click);
+            // 
+            // lblBillDetails
+            // 
+            this.lblBillDetails.AutoSize = true;
+            this.lblBillDetails.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBillDetails.Location = new System.Drawing.Point(28, 8);
+            this.lblBillDetails.Name = "lblBillDetails";
+            this.lblBillDetails.Size = new System.Drawing.Size(49, 14);
+            this.lblBillDetails.TabIndex = 0;
+            this.lblBillDetails.Text = "label1";
+            this.lblBillDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBillDetails.UseWaitCursor = true;
+            this.lblBillDetails.Click += new System.EventHandler(this.lblBillDetails_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPaymentMethods);
+            this.Controls.Add(this.picLogoVNPay);
+            this.Controls.Add(this.picLogoMoMo);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblClock);
@@ -185,6 +231,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picQR)).EndInit();
             this.pnlBill.ResumeLayout(false);
             this.pnlBill.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogoMoMo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogoVNPay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,13 +245,16 @@
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.PictureBox picQR;
         private System.Windows.Forms.Panel pnlBill;
-        private System.Windows.Forms.Label lblBillDetails;
         private System.Windows.Forms.Label lblClock;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timerReset;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Timer timerFakeAPI;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.PictureBox picLogoMoMo;
+        private System.Windows.Forms.PictureBox picLogoVNPay;
+        private System.Windows.Forms.Label lblPaymentMethods;
+        private System.Windows.Forms.Label lblBillDetails;
     }
 }
 

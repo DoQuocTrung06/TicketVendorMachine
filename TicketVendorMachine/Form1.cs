@@ -76,12 +76,16 @@ namespace TicketVendorMachine
 
             
             lblStatus.Text = "Đang chờ bạn quét mã (Giả lập 5s)...";
-            lblStatus.ForeColor = Color.Blue;
+            lblStatus.ForeColor = Color.Black;
             lblStatus.Visible = true;
 
             btnPay.Visible = false;
 
             btnCancel.Visible = true;
+
+            picLogoMoMo.Visible = true;
+            picLogoVNPay.Visible = true;
+            lblPaymentMethods.Visible = true;
 
             timerFakeAPI.Start();
         }
@@ -117,7 +121,7 @@ namespace TicketVendorMachine
                     // Hiển thị Bill
                     pnlBill.Visible = true;
 
-                    lblBillDetails.Text = $"=== VÉ TÀU BEN THANH METRO ===\n\n" +
+                    lblPaymentMethods.Visible = false;lblBillDetails.Text = $"=== VÉ TÀU BEN THANH METRO ===\n\n" +
                                           $"Mã vé: #{ticketId}\n" +
                                           $"Tuyến: {routeName}\n" +
                                           $"Giá tiền: {price} VNĐ\n" +
@@ -125,7 +129,7 @@ namespace TicketVendorMachine
                                           $"Trạng thái: ĐÃ THANH TOÁN (QR)\n\n" +
                                           $"Chúc quý khách chuyến đi vui vẻ!";
 
-                    // Ẩn các thành phần giao diện không cần thiết
+                    
                     cbRoutes.Visible = false;
                     lblPrice.Visible = false;
                     btnPay.Visible = false;
@@ -156,17 +160,17 @@ namespace TicketVendorMachine
 
         private void timerReset_Tick(object sender, EventArgs e)
         {
-            // 1. Dọn dẹp màn hình in vé
+            
             pnlBill.Visible = false;
             
-            lblStatus.Visible = false; // <--- THÊM DÒNG NÀY ĐỂ GIẤU CHỮ ĐI
+            lblStatus.Visible = false; 
 
-            // 2. Hiện lại toàn bộ màn hình chính ban đầu
+            
             cbRoutes.Visible = true;
             lblPrice.Visible = true;
             btnPay.Visible = true;
 
-            // 3. Dừng bộ đếm
+           
             timerReset.Stop();
         }
 
@@ -188,6 +192,11 @@ namespace TicketVendorMachine
             btnCancel.Visible = false;
             
             picQR.Image = null;
+
+            picLogoMoMo.Visible = false;
+            picLogoVNPay.Visible = false;
+            lblPaymentMethods.Visible = false;
+
             lblStatus.Text = "Thanh toán thành công! Đang in vé...";
             lblStatus.ForeColor = Color.Green;
 
@@ -211,9 +220,13 @@ namespace TicketVendorMachine
             
             picQR.Image = null;
             lblStatus.Visible = false;
-            btnCancel.Visible = false; 
+            btnCancel.Visible = false;
 
-            
+
+            picLogoMoMo.Visible = false;
+            picLogoVNPay.Visible = false;
+            lblPaymentMethods.Visible = false;
+
             cbRoutes.Visible = true;
             lblPrice.Visible = true;
             btnPay.Visible = true;
@@ -224,6 +237,21 @@ namespace TicketVendorMachine
         }
 
         private void lblStatus_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picLogoVNPay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPaymentMethods_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picLogoMoMo_Click(object sender, EventArgs e)
         {
 
         }
