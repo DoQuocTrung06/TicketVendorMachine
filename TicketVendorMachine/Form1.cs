@@ -193,6 +193,8 @@ namespace TicketVendorMachine
             
             picQR.Image = null;
 
+            lblPrice.Visible = false;
+            cbRoutes.Visible = false;
             picLogoMoMo.Visible = false;
             picLogoVNPay.Visible = false;
             lblPaymentMethods.Visible = false;
